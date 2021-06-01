@@ -38,6 +38,7 @@ RSpec testing suite is utilized for testing this application.
 
 ## Database Schema
 The schema represents the relationships between the models in the database. The schema includes the following three tables:
+![Screen Shot 2021-06-01 at 4 56 24 PM](https://user-images.githubusercontent.com/23460878/120395274-59d9f180-c2fa-11eb-9661-6a6091bb6f3a.png)
 
 
 ## Endpoints
