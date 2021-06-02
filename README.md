@@ -48,9 +48,11 @@ The schema represents the relationships between the models in the database. The 
 | ---------- | ------ | -------- | ------:|
 | POST | /api/v1/customers | Create a new customer | [json](#create-a-customer) |
 | POST | /api/v1/teas | Create a new tea | [json](#create-a-tea) |
-| POST | /api/v1/customers/:customer_id/teas/:tea_id  | Subscribe a Customer to a Tea | [json](#subscribe-a-customer-to-a-tea) |
-| DELETE | /api/v1/customers/:customer_id/teas/:tea_id  | Cancel a customer's tea subscription | [json](#cancel-a-customer's-tea-subscription) |
-| GET | /api/v1/customers/:customer_id/teas  | Get all of a customer's subscriptions(active and cancelled) | [json](#get-all-subscription) |
+| POST | /api/v1/customers/:customer_id/subscriptions | Subscribe a Customer to a Tea | [json](#subscribe-a-customer-to-a-tea) |
+| PATCH | /api/v1/customers/:customer_id/subscriptions/:id | Cancel a customer's tea subscription | [json](#cancel-a-customer's-tea-subscription) |
+| GET | /api/v1/customers/:customer_id/subscriptions | Get all of a customer's subscriptions(active and cancelled) | [json](#get-all-subscription) |
+| ERROR | errors | Error handling for requests | [json](#error-handling) |
+
 
 ## Built With
 - Ruby
@@ -62,6 +64,7 @@ The schema represents the relationships between the models in the database. The 
 ## Versioning
 - Ruby 2.5.3
 - Rails 6.1.3.2
+- RSpec 3.10.0
 
 ## Author
 - **Katy La Tour**
