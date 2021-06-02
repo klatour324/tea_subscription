@@ -4,7 +4,7 @@ class Api::V1::CustomersController < ApplicationController
     if customer.save
       render json: CustomersSerializer.new(customer), status: :created
     else
-      render json: {error: "First name, last name, email, street adress, city, state or zipcode cannot be blank"}, status: 400
+      error(message)
     end
   end
 
