@@ -49,8 +49,30 @@ The schema represents the relationships between the models in the database. The 
 | POST | /api/v1/customers | Create a new customer | [json](#create-a-customer) |
 | POST | /api/v1/teas | Create a new tea | [json](#create-a-tea) |
 | POST | /api/v1/customers/:customer_id/subscriptions | Subscribe a Customer to a Tea | [json](#subscribe-a-customer-to-a-tea) |
-| PATCH | /api/v1/customers/:customer_id/subscriptions/:id?status="cancelled" | Cancel a customer's tea subscription | [json](#cancel-a-customer's-tea-subscription) |
+| PATCH | /api/v1/customers/:customer_id/subscriptions/:id | Cancel a customer's tea subscription | [json](#cancel-a-customer's-tea-subscription) |
 | GET | /api/v1/customers/:customer_id/subscriptions | Get all of a customer's subscriptions(active and cancelled) | [json](#get-all-subscription) |
+
+## JSON Responses
+​
+## Create a Customer
+`POST /api/v1/customers`
+  ```json
+  {
+    "data": {
+              "id": "4",
+              "type": "customer",
+              "attributes": {
+                "first_name": "Joe",
+                "last_name": "Shmoe",
+                "email": "whatever@example.com",
+                "street_address": "123 Peach St.",
+                "city": "Denver",
+                "state": "CO",
+                "zipcode": "80110"
+              }
+          }    
+  }
+  ```
 
 ## Built With
 - Ruby
