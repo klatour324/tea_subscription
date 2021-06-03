@@ -4,7 +4,7 @@ class Api::V1::CustomersController < ApplicationController
     if customer.save
       render json: CustomersSerializer.new(customer), status: :created
     else
-      error(message)
+      error(customer.errors.full_messages.to_sentence)
     end
   end
 
