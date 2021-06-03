@@ -206,24 +206,27 @@ The request updates an existing customer's subscription record when given valid 
         "subscriptions": [
           {
             "customer_id": "4",
+            "tea_id": "1",
             "title": "Mommy's Monthly Tea Fixin",
             "price": "29.99",
             "frequency": "Once a month",
-            "status": "cancelled"  
+            "active": "true"  
           },
           {
             "customer_id": "4",
+            "tea_id": "2",
             "title": "Holiday Herbal Special",
             "price": "74.99",
             "frequency": "Once a year",
-            "status": "cancelled"
+            "active": "false"
           },
           {
             "customer_id": "4",
+            "tea_id": "3",
             "title": "Your Herbacious Home Remedy",
             "price": "24.99",
             "frequency": "Twice a month",
-            "status": "active"
+            "active": "true"
           }
         ]
       }
