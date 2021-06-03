@@ -39,5 +39,51 @@ RSpec.describe 'Create a New Tea' do
         expect(result[:data][:attributes][:brew_time]).to be_a(String)
       end
     end
+
+    describe 'sad path' do
+      it 'cannot create a tea with missing required fields' do
+
+        tea_params = ({
+          title: "",
+          description: "Earl Grey calming tea",
+          temperature: 198.10,
+          brew_time: "7 minutes total"
+          })
+        headers = {"CONTENT_TYPE" => "application/json"}
+        post "/api/v1/teas", headers: headers, params: JSON.generate(tea_params)
+
+        result = JSON.parse(response.body, symbolize_names: true)
+        tea1 = Tea.last
+
+        error = JSON.parse(response.body, symbolize_names: true)
+        error_message = "Title can't be blank"
+
+        expect(response).to have_http_status(400)
+        expect(error).to have_key(:error)
+        expect(error[:error]).to eq("#{error_message}")
+      end
+
+      it 'cannot create a tea with invalid input' do
+
+        tea_params = ({
+          title: "Yummy Yummy in My Tummy Tea",
+          description: "Earl Grey calming tea",
+          temperature: 198.10,
+          brew_time: {}
+          })
+        headers = {"CONTENT_TYPE" => "application/json"}
+        post "/api/v1/teas", headers: headers, params: JSON.generate(tea_params)
+
+        result = JSON.parse(response.body, symbolize_names: true)
+        tea1 = Tea.last
+
+        error = JSON.parse(response.body, symbolize_names: true)
+        error_message = "Brew time can't be blank"
+
+        expect(response).to have_http_status(400)
+        expect(error).to have_key(:error)
+        expect(error[:error]).to eq("#{error_message}")
+      end
+    end
   end
 end
