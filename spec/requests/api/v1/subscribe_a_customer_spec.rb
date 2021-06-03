@@ -33,7 +33,7 @@ RSpec.describe 'Subscribe a Customer to a Tea' do
         expect(result[:data][:id]).to be_a(String)
         expect(result[:data][:id]).to eq(subscription1.id.to_s)
         expect(result[:data]).to have_key(:type)
-        expect(result[:data][:type]).to eq("subscription")
+        expect(result[:data][:type]).to eq("customer_subscription")
         expect(result[:data]).to have_key(:attributes)
         expect(result[:data][:attributes]).to be_a(Hash)
         expect(result[:data][:attributes].count).to eq(6)

@@ -29,7 +29,7 @@ RSpec.describe 'Cancel a Customers Subscription' do
         expect(result[:data][:id]).to be_a(String)
         expect(result[:data][:id]).to eq(subscription1.id.to_s)
         expect(result[:data]).to have_key(:type)
-        expect(result[:data][:type]).to eq("subscription")
+        expect(result[:data][:type]).to eq("customer_subscription")
         expect(result[:data]).to have_key(:attributes)
         expect(result[:data][:attributes]).to be_a(Hash)
         expect(result[:data][:attributes].count).to eq(6)
@@ -63,18 +63,18 @@ RSpec.describe 'Cancel a Customers Subscription' do
         expect(result).to eq({error: "Invalid parameters: Active status is invalid. Please try again"})
       end
 
-      # it 'returns a 404 error response if the subscription is invalid and does not exist' do
-      #   subscription_params = ({active: false, price: 49.99, frequency: "Four times a month"})
-      #   headers = {"CONTENT_TYPE" => "application/json"}
-      #   patch "/api/v1/customers/#{@customer.id}/subscriptions/1", headers: headers, params: JSON.generate(subscription_params)
-      #
-      #   result = JSON.parse(response.body, symbolize_names: true)
-      #
-      #   expect(response).to_not be_successful
-      #   expect(response.status).to eq(404)
-      #   expect(result).to have_key(:error)
-      #   expect(result).to eq({error: "Couldn't find Subscription with 'id'=1"})
-      # end
+      it 'returns a 404 error response if the subscription is invalid and does not exist' do
+        subscription_params = ({active: false, price: 49.99, frequency: "Four times a month"})
+        headers = {"CONTENT_TYPE" => "application/json"}
+        patch "/api/v1/customers/#{@customer.id}/subscriptions/1", headers: headers, params: JSON.generate(subscription_params)
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq(404)
+        expect(result).to have_key(:error)
+        expect(result).to eq({error: "Couldn't find Subscription with 'id'=1"})
+      end
     end
   end
 end
