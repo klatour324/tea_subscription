@@ -47,7 +47,7 @@ The schema represents the relationships between the models in the database. The 
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
 | POST | /api/v1/customers | Create a new customer | [api_doc](https://github.com/klatour324/tea_subscription/blob/main/api_contract_doc.md#create-a-customer) |
-| POST | /api/v1/teas | Create a new tea | [json](https://github.com/klatour324/tea_subscription/blob/main/api_contract_doc.md#create-a-tea) |
+| POST | /api/v1/teas | Create a new tea | [api_doc](https://github.com/klatour324/tea_subscription/blob/main/api_contract_doc.md#create-a-tea) |
 | POST | /api/v1/customers/:customer_id/subscriptions | Subscribe a Customer to a Tea | [api_doc](https://github.com/klatour324/tea_subscription/blob/main/api_contract_doc.md#subscribe-a-customer-to-a-tea) |
 | PATCH | /api/v1/customers/:customer_id/subscriptions/:id | Cancel a customer's tea subscription | [api_doc](https://github.com/klatour324/tea_subscription/blob/main/api_contract_doc.md#cancel-a-customer's-tea-subscription) |
 | GET | /api/v1/customers/:customer_id/subscriptions | Get all of a customer's subscriptions(active and cancelled) | [api_doc](https://github.com/klatour324/tea_subscription/blob/main/api_contract_doc.md#get-all-subscription) |
