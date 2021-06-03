@@ -1,6 +1,6 @@
 class SubscriptionSerializer
   include FastJsonapi::ObjectSerializer
-  set_type "subscription"
+  set_type "customer_subscription"
   attributes  :title,
               :price,
               :active,
