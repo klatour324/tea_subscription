@@ -4,7 +4,7 @@ class Api::V1::TeasController < ApplicationController
     if tea.save
       render json: TeasSerializer.new(tea), status: :created
     else
-      error(message)
+      error(tea.errors.full_messages.to_sentence)
     end
   end
 
