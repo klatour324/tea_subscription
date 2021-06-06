@@ -199,39 +199,33 @@ The request updates an existing customer's subscription record when given valid 
   Example json response
   ```json
   {
-    "data": {
-      "id": "1",
-      "type": "customer_subscriptions",
-      "attributes": {
-        "subscriptions": [
+    "data": [
+              {
+                "id": "67",
+                "type": "customer_subscription",
+                "attributes": {
+                  "title": "Captain's Java",
+                  "price": 58.27,
+                  "status": "active",
+                  "frequency": "monthly",
+                  "customer_id": 36,
+                  "tea_id": 36
+                  }
+              },
           {
-            "customer_id": "4",
-            "tea_id": "1",
-            "title": "Mommy's Monthly Tea Fixin",
-            "price": "29.99",
-            "frequency": "Once a month",
-            "active": "true"  
-          },
-          {
-            "customer_id": "4",
-            "tea_id": "2",
-            "title": "Holiday Herbal Special",
-            "price": "74.99",
-            "frequency": "Once a year",
-            "active": "false"
-          },
-          {
-            "customer_id": "4",
-            "tea_id": "3",
-            "title": "Your Herbacious Home Remedy",
-            "price": "24.99",
-            "frequency": "Twice a month",
-            "active": "true"
+              "id": "68",
+              "type": "customer_subscription",
+              "attributes": {
+                "title": "Huggy Forrester",
+                "price": 91.69,
+                "status": "active",
+                "frequency": "monthly",
+                "customer_id": 36,
+                "tea_id": 37
+                }
           }
-        ]
-      }
-    }
-  }
+    ]
+}
 ```
 
 
