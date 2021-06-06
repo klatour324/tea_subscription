@@ -5,8 +5,11 @@ class Subscription < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :price
   validates_presence_of :frequency
+  validates_presence_of :status
 
-  def self.active(status)
-    where(active: status)
-  end
+  enum status: [:active, :cancelled]
+
+  # def self.active(status)
+  #   where(active: status)
+  # end
 end

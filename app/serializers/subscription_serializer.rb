@@ -3,7 +3,7 @@ class SubscriptionSerializer
   set_type "customer_subscription"
   attributes  :title,
               :price,
-              :active,
+              :status,
               :frequency,
               :customer_id,
               :tea_id
