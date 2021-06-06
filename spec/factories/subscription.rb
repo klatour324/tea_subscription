@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :subscription do
-    title { "Brew Town Monthly Subscription" }
+    title { Faker::Coffee.blend_name }
     status { [0, 1].sample }
     price { Faker::Commerce.price(range: 9.99..99.99)}
-    frequency { "Once a month" }
+    frequency { ["monthly", "weekly", "annually"].sample }
     tea
     customer
   end
