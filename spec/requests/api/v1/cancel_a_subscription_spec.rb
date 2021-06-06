@@ -18,7 +18,6 @@ RSpec.describe 'Cancel a Customers Subscription' do
         patch "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", headers: headers, params: JSON.generate(subscription_params)
 
         result = JSON.parse(response.body, symbolize_names: true)
-        # require "pry"; binding.pry
         subscription1 = Subscription.last
 
         expect(response).to be_successful
@@ -34,10 +33,10 @@ RSpec.describe 'Cancel a Customers Subscription' do
         expect(result[:data]).to have_key(:attributes)
         expect(result[:data][:attributes]).to be_a(Hash)
         expect(result[:data][:attributes].count).to eq(6)
-        expect(result[:data][:attributes]).to have_key(:title)
-        expect(result[:data][:attributes][:title]).to be_a(String)
         expect(result[:data][:attributes]).to have_key(:customer_id)
         expect(result[:data][:attributes][:customer_id]).to be_an(Integer)
+        expect(result[:data][:attributes]).to have_key(:title)
+        expect(result[:data][:attributes][:title]).to be_a(String)
         expect(result[:data][:attributes]).to have_key(:tea_id)
         expect(result[:data][:attributes][:tea_id]).to be_an(Integer)
         expect(result[:data][:attributes]).to have_key(:status)
