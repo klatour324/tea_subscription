@@ -63,6 +63,70 @@ RSpec.describe 'Cancel a Customers Subscription' do
         expect(result).to eq({error: "Invalid parameters: Please send a valid query parameter"})
       end
 
+      it 'returns a 400 error response if status is left blank' do
+        subscription_params = {status: ''}
+
+        headers = {"CONTENT_TYPE" => "application/json"}
+        patch "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", headers: headers, params: subscription_params.to_json
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq(400)
+        expect(result).to have_key(:error)
+        expect(result).to eq({error: "Status can't be blank"})
+      end
+
+      it 'returns a 400 error response if no price exists' do
+        subscription_params = {
+                                status: 'active',
+                                price: '',
+                                frequency: 'Weekly'
+                              }
+
+        headers = {"CONTENT_TYPE" => "application/json"}
+        patch "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", headers: headers, params: subscription_params.to_json
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq(400)
+        expect(result).to have_key(:error)
+        expect(result).to eq({error: "Price can't be blank"})
+      end
+
+      it 'returns a 400 error response if no frequency exists' do
+        subscription_params = {
+                                status: 'active',
+                                price: 45.99,
+                                frequency: ''
+                              }
+
+        headers = {"CONTENT_TYPE" => "application/json"}
+        patch "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", headers: headers, params: subscription_params.to_json
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq(400)
+        expect(result).to have_key(:error)
+        expect(result).to eq({error: "Frequency can't be blank"})
+      end
+
+      it 'returns a 400 error response if status is anything other than active or cancelled' do
+        subscription_params = {status: 'just kidding'}
+
+        headers = {"CONTENT_TYPE" => "application/json"}
+        patch "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", headers: headers, params: subscription_params.to_json
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq(400)
+        expect(result).to have_key(:error)
+        expect(result).to eq({error: "'just kidding' is not a valid status"})
+      end
+
       it 'returns a 404 error response if the subscription is invalid and does not exist' do
         subscription_id = 1234569230489103858476
         subscription_params = ({status: 'cancelled', price: 49.99, frequency: "Four times a month"})
