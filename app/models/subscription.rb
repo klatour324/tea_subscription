@@ -8,8 +8,4 @@ class Subscription < ApplicationRecord
   validates_presence_of :status
 
   enum status: [:active, :cancelled]
-
-  # def self.active(status)
-  #   where(active: status)
-  # end
 end
